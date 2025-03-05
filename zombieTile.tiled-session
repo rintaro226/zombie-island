@@ -1,0 +1,65 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "#tilemap-backgrounds_packed": {
+            "scaleInDock": 1
+        },
+        "#tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 0.5329,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 302.1204728842184,
+                "y": 306.8117845749671
+            }
+        },
+        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx#tileset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.64
+        },
+        "tilemap_packed.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/Users/rintarooshima/Desktop/CMPM120/phaser3/zombie-island/assets",
+    "last.imagePath": "/Users/rintarooshima/Downloads/kenney_pixel-platformer/Tilemap",
+    "map.height": 30,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 18,
+    "map.tileWidth": 18,
+    "map.width": 300,
+    "openFiles": [
+        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx"
+    ],
+    "project": "zombieTile.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
+        "tilemap_packed.tsx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 18,
+        "width": 18
+    },
+    "tileset.transparentColor": "#000000",
+    "tileset.useTransparentColor": true
+}
