@@ -2,7 +2,7 @@ console.log('hello world')
 let config ={
     type: Phaser.AUTO,
     width:640,
-    height:480,
+    height:370,
     scene:[ Menu, Play, Over],
     pixelArt: true,
     zoom: 2,

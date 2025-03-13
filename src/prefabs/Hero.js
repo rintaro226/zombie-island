@@ -4,11 +4,15 @@ class Hero extends Phaser.Physics.Arcade.Sprite{
         scene.add.existing(this)
         scene.physics.add.existing(this)// add physics body to scene
 
-        this.body.setSize(this.width/2,this.height/2)//how big this character physics is
+        this.body.setSize(this.width/2,this.height)//how big this character physics is
         this.body.setCollideWorldBounds(true)
         this.body.setGravityY(800); // 重力を適用
 
+        //
+    
+
         // **デバッグ用の枠線**
+        
         
         
 
@@ -18,6 +22,8 @@ class Hero extends Phaser.Physics.Arcade.Sprite{
         this.heroVelocity = 100 //in pixel
         this.DASH = 2 // the rate to the move
         this.CDASH = 5
+
+        this.health = 5 //HP
         
 
         // initialize state machine managing hero (initial state, possible states, state args[])
@@ -28,16 +34,18 @@ class Hero extends Phaser.Physics.Arcade.Sprite{
             punch : new PunchState(),
             cdash : new CDashState(),
             jump : new JumpState(),
-            crawl : new CrawlState()
+            crawl : new CrawlState(),
+            knockback : new KnockbackState()
         },[scene,this])// pass these as arguments to maintain scene/object context in the FSM
     }
 }
 
 class IdleState extends State{
     enter(scene,hero){
+ 
         hero.setVelocity(0)
-        // hero.anims.play(`walk-${hero.direction}`)
-        // hero.anims.stop()// when the animation is done
+        hero.anims.play(`walk-${hero.direction}`)
+        hero.anims.stop()// when the animation is done
     }
 
     execute(scene,hero){
@@ -91,6 +99,7 @@ class MoveState extends State{
 
     execute(scene,hero){
         console.log('move')
+
          // use destructuring to make a local copy of the keyboard object
         const { left, right, up, down, space, shift } = scene.keys
         const AKey = scene.keys.AKey
@@ -142,6 +151,7 @@ class MoveState extends State{
         }
 
         hero.setVelocityX(hero.heroVelocity * moveDirectionX)
+        hero.anims.play(`walk-${hero.direction}`, true)
         // hero.anims.play(`walk-${hero.direction}`, true) // if animation is done
     }
 
@@ -204,7 +214,7 @@ class DashState extends State{
         }
 
         hero.setVelocityX(hero.heroVelocity * moveDirectionX * hero.DASH)
-        // hero.anims.play(`walk-${hero.direction}`, true) // if animation is done
+        hero.anims.play(`walk-${hero.direction}`, true) // if animation is done
     }
 
 }
@@ -244,7 +254,7 @@ class CDashState extends State{
 
         hero.setVelocityX(hero.heroVelocity * moveDirectionX * hero.CDASH)
 
-        // hero.anims.play(`walk-${hero.direction}`, true) // if animation is done
+        hero.anims.play(`walk-${hero.direction}`, true) // if animation is done
 
     }
 
@@ -255,8 +265,7 @@ class PunchState extends State{
     enter(scene, hero) {
         console.log('punch')
         hero.setVelocity(0)
-        // hero.anims.play(`swing-${hero.direction}`)
-        this.stateMachine.transition('idle')
+        hero.anims.play(`punch-${hero.direction}`)
         hero.once('animationcomplete', () => {
             this.stateMachine.transition('idle')
         })
@@ -267,7 +276,11 @@ class CrawlState extends State{
         enter(scene, hero) {
             console.log('crawl')
             hero.setVelocity(0)
-            // hero.anims.play(`swing-${hero.direction}`)
+
+            hero.anims.play(`crawl-${hero.direction}`)
+
+            hero.body.setSize(hero.width, hero.height / 2)
+            hero.body.offset.y = hero.height / 2
             
             }
         execute(scene, hero){
@@ -278,8 +291,11 @@ class CrawlState extends State{
             const DKey = scene.keys.DKey
 
             if(!(down.isDown)){
-                 this.stateMachine.transition('idle')
-                 return
+                hero.body.setSize(hero.width/2, hero.height);
+                hero.body.offset.y = 0
+                this.stateMachine.transition('idle')
+
+                return
 
             }
         }
@@ -298,6 +314,7 @@ class CrawlState extends State{
         execute(scene, hero) {
             if (hero.body.blocked.down) { // 着地したら `idle` に戻る
                 this.stateMachine.transition('idle')
+                return
             }
             const { left, right, up, down, space, shift } = scene.keys
             const AKey = scene.keys.AKey
@@ -317,7 +334,33 @@ class CrawlState extends State{
             }
 
             hero.setVelocityX(hero.heroVelocity * moveDirectionX)
-            // hero.anims.play(`walk-${hero.direction}`, true) // if animation is done
+            hero.anims.play(`jump-${hero.direction}`, true) // if animation is done
+        }
+    }
+
+    class KnockbackState extends State{
+        enter(scene,hero,direction){
+            if(hero.health > 0){
+                console.log('KnockbackState');
+                console.log(direction)
+    
+                const knockbackPower = 200
+                hero.setVelocityX(direction*knockbackPower)
+                hero.setTint(0xff0000)
+    
+                scene.time.delayedCall(300, () => {
+                    hero.clearTint();
+                    this.stateMachine.transition('idle');
+                });
+
+            }else{
+                hero.destroy()
+            }
+   
+        }
+
+        execute(scene,hero){
+
         }
     }
 

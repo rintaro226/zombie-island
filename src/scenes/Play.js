@@ -29,16 +29,26 @@ class Play extends Phaser.Scene{
       // add new Hero to scene (scene, x, y, key, frame, direction) 
         this.hero = new Hero(this, 200, 150, 'hero', 0, 'right')
 
+        this.zombie = new Zombie(this,300,150,'hero',0,'right')
+
 
 
         //physics　
         this.physics.add.collider(this.hero,groundLayer)
+        this.physics.add.collider(this.zombie,groundLayer)
         // camera
         this.cameras.main.setBounds(0,0,map.widthInPixels,map.heightInPixels)
         this.physics.world.setBounds(0,0,map.widthInPixels,map.heightInPixels)
         this.cameras.main.startFollow(this.hero,true,0.25,0.25)
+
+
+        //when zombies touch the hero
+
+        this.physics.add.collider(this.hero,this.zombie,this.handlePlayerHit,null,this)//call the function
+
         
         console.log("play scene")
+
 
 
     
@@ -46,5 +56,29 @@ class Play extends Phaser.Scene{
     update() {
         // make sure we step (ie update) the hero's state machine
         this.heroFSM.step()
+        this.zombie.update(this.hero)
     }
+
+
+    handlePlayerHit(hero,zombie){
+        console.log("hit")
+        // if ( !hero.stateMachine) {
+        //     console.warn('Hero or stateMachine is undefined!');
+        //     return;
+        // }
+
+        //damage
+        hero.health -= 1
+        console.log(hero.health)
+      
+        //knock back
+        const knockbackDirection = (hero.x < zombie.x) ? -1 : 1;
+
+        this.heroFSM.transition('knockback', knockbackDirection);
+
+
+            
+    }
+
+
 }

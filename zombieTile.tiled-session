@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
+    "activeFile": "assets/level1.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -24,13 +24,28 @@
             "scale": 0.5329,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 302.1204728842184,
-                "y": 306.8117845749671
+                "x": 359.3544755113529,
+                "y": 258.9604053293301
             }
         },
         "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx#tileset": {
             "scaleInDock": 1,
             "scaleInEditor": 0.64
+        },
+        "assets/level1.tmx": {
+            "scale": 0.8,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 336.25,
+                "y": 149.375
+            }
+        },
+        "assets/level1.tmx#tilemap-backgrounds_packed": {
+            "scaleInDock": 1
+        },
+        "assets/level1.tmx#tilemap_packed": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilemap_packed.tsx": {
             "scaleInDock": 1,
@@ -46,12 +61,14 @@
     "map.tileWidth": 18,
     "map.width": 300,
     "openFiles": [
-        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx"
+        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
+        "assets/level1.tmx"
     ],
     "project": "zombieTile.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
+        "assets/level1.tmx",
         "tilemap_packed.tsx"
     ],
     "tileset.embedInMap": true,
