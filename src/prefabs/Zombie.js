@@ -12,6 +12,8 @@ class Zombie extends Phaser.Physics.Arcade.Sprite{
         this.player = scene.hero
         this.speed = 20
 
+        this.health = 2
+
 
         // this.play('zombieSpawn')
         // this.once('animationcomplete',()=>{
@@ -21,6 +23,10 @@ class Zombie extends Phaser.Physics.Arcade.Sprite{
     }
 
     update(){
+        this.body.setGravityY(800); // 重力を適用
+        if (!this.active) {  // すでに destroy されていたら処理しない
+            return;
+        }
         if(!this.player) return;
 
         if(this.x + 10 <this.player.x){
@@ -35,5 +41,25 @@ class Zombie extends Phaser.Physics.Arcade.Sprite{
             this.setVelocityX(0)
         }
 
+    }
+
+    takeDamage(damage){
+        this.health -= damage
+        console.log(`Zombie HP: ${this.health}`);
+        if(this.health<= 0){
+            this.die()
+        }
+    }
+
+    die(){
+        console.log("Zombie dies!");
+        // this.setVelocity(0);
+        // this.anims.play('zombieDeath');
+        this.destroy()
+
+        // // **アニメーション完了後に削除**
+        // this.once('animationcomplete', () => {
+        //     this.destroy();
+        // });
     }
 }

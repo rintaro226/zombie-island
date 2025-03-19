@@ -5,15 +5,25 @@ class Hero extends Phaser.Physics.Arcade.Sprite{
         scene.physics.add.existing(this)// add physics body to scene
 
         this.body.setSize(this.width/2,this.height)//how big this character physics is
-        this.body.setCollideWorldBounds(true)
+        // this.body.setCollideWorldBounds(true)
         this.body.setGravityY(800); // 重力を適用
 
-        //
+        //addition hitbox for punch call attackHit
+
+        this.hitbox = scene.physics.add.sprite(this.x,this.y,null)
+        this.hitbox.setSize(10, 10)
+        this.hitbox.setVisible(false)
+        this.hitbox.setActive(false)
+        this.hitbox.disableBody(true, true)
+
+        // scene.physics.add.overlap(this.hitbox,scene.zombie,scene.attackHit,null,this)
+
+
     
 
         // **デバッグ用の枠線**
         
-        
+
         
 
 
@@ -266,7 +276,26 @@ class PunchState extends State{
         console.log('punch')
         hero.setVelocity(0)
         hero.anims.play(`punch-${hero.direction}`)
+
+        //punch set
+        hero.hitbox.setPosition(
+            hero.x + (hero.direction === 'right' ? 30 : -30),
+            hero.y
+        )
+        hero.hitbox.setActive(true)
+        hero.hitbox.setVisible(true);
+        hero.hitbox.enableBody(true, hero.hitbox.x, hero.hitbox.y, true, true)
+        // hero.hitbox.enableBody(true, true)
+
+
+
         hero.once('animationcomplete', () => {
+
+            hero.hitbox.setActive(false);
+            hero.hitbox.setVisible(false);
+            hero.hitbox.disableBody(true, true)
+            
+
             this.stateMachine.transition('idle')
         })
         }
@@ -355,6 +384,8 @@ class CrawlState extends State{
 
             }else{
                 hero.destroy()
+                scene.scene.start('overScene')
+                scene.backgroundMusic.stop();
             }
    
         }

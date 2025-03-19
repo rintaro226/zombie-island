@@ -3,13 +3,20 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "assets/level1.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
     ],
     "fileStates": {
         "": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "#New Piskel (1)": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3.0527
+        },
+        "#New Piskel (4)": {
+            "scaleInDock": 0.75
         },
         "#tilemap-backgrounds_packed": {
             "scaleInDock": 1
@@ -24,8 +31,8 @@
             "scale": 0.5329,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 359.3544755113529,
-                "y": 258.9604053293301
+                "x": 358.41621317320323,
+                "y": 258.02214299118026
             }
         },
         "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx#tileset": {
@@ -33,12 +40,15 @@
             "scaleInEditor": 0.64
         },
         "assets/level1.tmx": {
-            "scale": 0.8,
-            "selectedLayer": 1,
+            "scale": 0.12,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 336.25,
-                "y": 149.375
+                "x": 1100,
+                "y": 24237.5
             }
+        },
+        "assets/level1.tmx#Hero": {
+            "scaleInDock": 1
         },
         "assets/level1.tmx#tilemap-backgrounds_packed": {
             "scaleInDock": 1
@@ -47,35 +57,46 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "assets/newtilemap.tmx": {
+            "scale": 1.0129,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 327.77174449600165,
+                "y": 260.6377727317603
+            }
+        },
+        "assets/newtilemap.tmx#New Piskel (4)": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
         "tilemap_packed.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
     "last.exportedFilePath": "/Users/rintarooshima/Desktop/CMPM120/phaser3/zombie-island/assets",
-    "last.imagePath": "/Users/rintarooshima/Downloads/kenney_pixel-platformer/Tilemap",
-    "map.height": 30,
+    "last.imagePath": "/Users/rintarooshima/Desktop/CMPM120/phaser3/zombie-island/assets",
+    "map.height": 15,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.lastUsedFormat": "tmx",
-    "map.tileHeight": 18,
-    "map.tileWidth": 18,
-    "map.width": 300,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 32,
+    "map.tileWidth": 32,
+    "map.width": 150,
     "openFiles": [
-        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
-        "assets/level1.tmx"
     ],
     "project": "zombieTile.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
+        "assets/newtilemap.tmx",
         "assets/level1.tmx",
+        "/Users/rintarooshima/Desktop/CMPM120/phaser3/CP-Slime-World/assets/overworld.tmx",
         "tilemap_packed.tsx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 18,
-        "width": 18
+        "height": 32,
+        "width": 32
     },
     "tileset.transparentColor": "#000000",
     "tileset.useTransparentColor": true

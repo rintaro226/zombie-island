@@ -17,4 +17,4 @@ let game = new Phaser.Game(config)
 
 let width = config.width
 let height = config.height
-let keyRIGHT, keyLEFT, keyUP, keyDOWN, keyA, keyB, keyC, keyD
+let keyRIGHT, keyLEFT, keyUP, keyDOWN, keyA, keyB, keyC, keyD,keyR
